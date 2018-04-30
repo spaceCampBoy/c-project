@@ -20,7 +20,7 @@ display_t display_create()
 	return new_display; 
 }
 
-void display_destroy(display_t self)
+void display_destroy(display_t *self)
 {
 	free(self);
 }
@@ -93,7 +93,6 @@ void displayGameLost()
 		_delay_ms(500);	// delay
 	}
 }
-
 
 void displayGameWon()
 {

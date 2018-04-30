@@ -26,12 +26,10 @@ void utility_destroy(utility_t *self)
 }
 
 int randomNumber()
-{
-	
+{	
 	int n = rand() % 8;
 	printf(" %d", n);
-	return n;
-	
+	return n;	
 }
 
 void generateRandomNumbers(utility_t *self)
@@ -53,7 +51,7 @@ void increaseLevel(utility_t *self)
 
 void resetLevel(utility_t *self)
 {
-	self->level = 0;
+	self->level = 1;
 	free(self->sequence);
 	self->sequence = calloc((self->level + 2), sizeof(int));
 }

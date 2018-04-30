@@ -11,7 +11,7 @@
 
 typedef struct display_t * display_t;
 display_t display_create();
-void display_destroy(display_t self);
+void display_destroy(display_t *self);
 
 void displayRandomSequence(int *sequence, int level);
 void displayWelcomeSequence();

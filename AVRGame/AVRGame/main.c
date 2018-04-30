@@ -4,6 +4,7 @@
  * Created: 19.04.2018 11:34:44
  * Author : Tor
  */ 
+#ifndef TEST
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -21,11 +22,13 @@ int main(void)
 	sei();
 	PINB = 0;
 	srand (time(NULL));
-	utility_t* u;
+	utility_t* u = utility_create();
+	
+	main();
 	
     while(1) //Game Main Loop
     {
-		u = utility_create();
+		resetLevel(u);
 		displayWelcomeSequence();
 		bool gameLost = false;
 		
@@ -46,6 +49,7 @@ int main(void)
 				{
 					displayGameLost();
 					gameLost = true;
+					//Use GOTO?
 					break;
 				}
 			}
@@ -59,13 +63,10 @@ int main(void)
 				displayGameWon();
 				break;
 			}
-			increaseLevel(u);
-			
+			increaseLevel(u);		
 		}
-		
-		
-		
     }
-	
 }
+
+#endif
 
