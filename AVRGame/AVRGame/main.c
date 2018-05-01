@@ -47,7 +47,6 @@ int main(void)
 				{
 					displayGameLost();
 					gameLost = true;
-					//Use GOTO?
 					break;
 				}
 			}
@@ -65,6 +64,5 @@ int main(void)
 		}
     }
 }
-
 #endif
 

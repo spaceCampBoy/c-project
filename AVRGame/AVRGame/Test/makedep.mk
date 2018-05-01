@@ -8,8 +8,6 @@ main.c
 
 test_main.c
 
-test_display.c
-
 test_utility.c
 
 Utility.c

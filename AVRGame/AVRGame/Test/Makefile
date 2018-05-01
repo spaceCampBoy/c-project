@@ -40,7 +40,6 @@ C_SRCS +=  \
 ../Display.c \
 ../main.c \
 ../test_main.c \
-../test_display.c \
 ../test_utility.c \
 ../Utility.c
 
@@ -55,7 +54,6 @@ OBJS +=  \
 Display.o \
 main.o \
 test_main.o \
-test_display.o \
 test_utility.o \
 Utility.o
 
@@ -63,7 +61,6 @@ OBJS_AS_ARGS +=  \
 Display.o \
 main.o \
 test_main.o \
-test_display.o \
 test_utility.o \
 Utility.o
 
@@ -71,7 +68,6 @@ C_DEPS +=  \
 Display.d \
 main.d \
 test_main.d \
-test_display.d \
 test_utility.d \
 Utility.d
 
@@ -79,7 +75,6 @@ C_DEPS_AS_ARGS +=  \
 Display.d \
 main.d \
 test_main.d \
-test_display.d \
 test_utility.d \
 Utility.d
 
@@ -98,8 +93,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-
-
 
 
 

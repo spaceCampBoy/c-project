@@ -13,7 +13,6 @@
 #include "minunit.h"
 #include "test_utility.h"
 
-//#include <avr/io.h>
 #include <avr/interrupt.h>
 #include "atmega2560_drivers.h"
 #include <stdio.h>
@@ -40,8 +39,9 @@ int main(void)
 			printf("ALL TESTS PASSED\n");
 		}
 		
-	while (1);	
-	return 0;
-		
+	printf("Tests run: %d\n", tests_run);
+	
+	_delay_ms(1000);
+	return result != 0;
 }
 #endif

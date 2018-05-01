@@ -9,7 +9,6 @@
 #include "test_utility.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <avr/io.h>
 #include <unistd.h>
 
 static char* test_randomNumbers()
@@ -19,7 +18,7 @@ static char* test_randomNumbers()
 	
 
 
-	//Level is increase to 1000 and 
+	//Level is increase to 1000 and the sequence array is filled with random numbers.
 	utility_t* u = utility_create();
 	u->level = 1000;
 	u->sequence = calloc((u->level + 2), sizeof(int));
@@ -44,17 +43,8 @@ static char* test_randomNumbers()
 			return 0;
 		}
 	}
-	
-	printf("\nInput0: %d", i0);
-	printf("\nInput1: %d", i1);
-	printf("\nInput2: %d", i2);
-	printf("\nInput3: %d", i3);
-	printf("\nInput4: %d", i4);
-	printf("\nInput5: %d", i5);
-	printf("\nInput6: %d", i6);
-	printf("\nInput6: %d\n", i7);
 
-
+	//Checking that the random numbers are equally distributed between the numbers 0 and 7.
 	if(i0 <= 100 && i0 >= 150) test_fail = true;
 	if(i1 <= 100 && i1 >= 150) test_fail = true;
 	if(i2 <= 100 && i2 >= 150) test_fail = true;

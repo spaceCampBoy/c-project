@@ -223,12 +223,6 @@
     <Compile Include="test_main.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="test_display.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="test_display.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="test_utility.c">
       <SubType>compile</SubType>
     </Compile>
