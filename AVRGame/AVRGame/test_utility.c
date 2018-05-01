@@ -8,45 +8,61 @@
 
 #include "test_utility.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <avr/io.h>
+#include <unistd.h>
 
 static char* test_randomNumbers()
 {
 	bool test_fail = false;
-	int i0, i1, i2, i3, i4, i5, i6, i7;
+	int i0=0, i1=0, i2=0, i3=0, i4=0, i5=0, i6=0, i7=0;
 	
+
+
+	//Level is increase to 1000 and 
 	utility_t* u = utility_create();
-	u->level = 10000;
+	u->level = 1000;
 	u->sequence = calloc((u->level + 2), sizeof(int));
 	generateRandomNumbers(u);
-	
+
 	//int i;
 	for(int i = 0; i < (u->level + 2); i++)
 	{
 		int randomNumber = u->sequence[i];
 		
 		if(randomNumber == 0) i0++;
-		if(randomNumber == 1) i1++;
-		if(randomNumber == 2) i2++;
-		if(randomNumber == 3) i3++;
-		if(randomNumber == 4) i4++;
-		if(randomNumber == 5) i5++;
-		if(randomNumber == 6) i6++;
-		if(randomNumber == 7) i7++;
-		else{ 
+		else if(randomNumber == 1) i1++;
+		else if(randomNumber == 2) i2++;
+		else if(randomNumber == 3) i3++;
+		else if(randomNumber == 4) i4++;
+		else if(randomNumber == 5) i5++;
+		else if(randomNumber == 6) i6++;
+		else if(randomNumber == 7) i7++;
+		else{
 			mu_assert("Random number not between 0 and 7", 0);
 			utility_destroy(u);
 			return 0;
 		}
 	}
 	
-	if(i0 <= 1200 && i0 >= 1300) test_fail = true;
-	if(i1 <= 1200 && i1 >= 1300) test_fail = true;
-	if(i2 <= 1200 && i2 >= 1300) test_fail = true;
-	if(i3 <= 1200 && i3 >= 1300) test_fail = true;
-	if(i4 <= 1200 && i4 >= 1300) test_fail = true;
-	if(i5 <= 1200 && i5 >= 1300) test_fail = true;
-	if(i6 <= 1200 && i6 >= 1300) test_fail = true;
-	if(i7 <= 1200 && i7 >= 1300) test_fail = true;
+	printf("\nInput0: %d", i0);
+	printf("\nInput1: %d", i1);
+	printf("\nInput2: %d", i2);
+	printf("\nInput3: %d", i3);
+	printf("\nInput4: %d", i4);
+	printf("\nInput5: %d", i5);
+	printf("\nInput6: %d", i6);
+	printf("\nInput6: %d\n", i7);
+
+
+	if(i0 <= 100 && i0 >= 150) test_fail = true;
+	if(i1 <= 100 && i1 >= 150) test_fail = true;
+	if(i2 <= 100 && i2 >= 150) test_fail = true;
+	if(i3 <= 100 && i3 >= 150) test_fail = true;
+	if(i4 <= 100 && i4 >= 150) test_fail = true;
+	if(i5 <= 100 && i5 >= 150) test_fail = true;
+	if(i6 <= 100 && i6 >= 150) test_fail = true;
+	if(i7 <= 100 && i7 >= 150) test_fail = true;
 	
 	mu_assert("Numbers are not random", !test_fail);
 	
@@ -81,7 +97,7 @@ static char* test_resetLevel()
 	
 	resetLevel(u);
 	
-	mu_assert("Reset level failed", u->level == 0);
+	mu_assert("Reset level failed", u->level == 1);
 	utility_destroy(u);
 	return 0;
 }
@@ -101,45 +117,11 @@ static char* test_compareValues()
 	return 0;
 }
 
-static char* test_getInputValue()
-{
-	PINB = 127;
-	mu_assert("Input != 7 ", getInputValue() == 7);
-	
-	PINB = 191;
-	mu_assert("Input != 6 ", getInputValue() == 6);
-	
-	PINB = 223;
-	mu_assert("Input != 5 ", getInputValue() == 5);
-	
-	PINB = 239;
-	mu_assert("Input != 4 ", getInputValue() == 4);
-	
-	PINB = 247;
-	mu_assert("Input != 3 ", getInputValue() == 3);
-	
-	PINB = 251;
-	mu_assert("Input != 2 ", getInputValue() == 2);
-	
-	PINB = 253;
-	mu_assert("Input != 1 ", getInputValue() == 1);
-	
-	PINB = 254;
-	mu_assert("Input != 0 ", getInputValue() == 0);
-	
-	PINB = 123;
-	mu_assert("Input != -1 ", getInputValue() == -1);
-	
-	return 0;
-}
-
-
 char * utility_tests()
 {
 	mu_run_test(test_randomNumbers);
 	mu_run_test(test_increaseLevel);
 	mu_run_test(test_resetLevel);
 	mu_run_test(test_compareValues);
-	mu_run_test(test_getInputValue);
 	return 0;
 }

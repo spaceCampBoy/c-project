@@ -13,13 +13,12 @@
 #include "minunit.h"
 #include "test_utility.h"
 
-#include <avr/io.h>
-#include <stdio.h>
+//#include <avr/io.h>
 #include <avr/interrupt.h>
 #include "atmega2560_drivers.h"
-#include <stdlib.h>
-#include <stdbool.h>
-#include <time.h>
+#include <stdio.h>
+
+int tests_run = 0; 
 
 static char * all_tests()
 {
@@ -27,21 +26,22 @@ static char * all_tests()
 	return 0;
 }
 
-int main()
-//int main(void)
+int main(void)
 {
 	    init_stdio(0, 10000000L);
 	    sei();
-	    printf("Initiating AVR GAME Unit Test...\n");
+	    printf("Initiating Unit Test...\n");
 		
 		char *result = all_tests();
 		if (result != 0) {
 			printf("Error: %s\n", result);
 		}
 		else {
-			printf("ALL UTILITY TESTS PASSED\n");
+			printf("ALL TESTS PASSED\n");
 		}
 		
-		return 0;
+	while (1);	
+	return 0;
+		
 }
 #endif

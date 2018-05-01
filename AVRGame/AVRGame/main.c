@@ -4,6 +4,7 @@
  * Created: 19.04.2018 11:34:44
  * Author : Tor
  */ 
+
 #ifndef TEST
 
 #include <avr/io.h>
@@ -15,7 +16,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 int main(void)
 {
 	init_stdio(0, 10000000L);
@@ -23,8 +23,6 @@ int main(void)
 	PINB = 0;
 	srand (time(NULL));
 	utility_t* u = utility_create();
-	
-	main();
 	
     while(1) //Game Main Loop
     {
